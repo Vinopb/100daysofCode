@@ -6,13 +6,17 @@
          <link href="style.css" rel="stylesheet">
          <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
          <link href="https://fonts.googleapis.com/css?family=Grand+Hotel|Satisfy" rel="stylesheet">
+         <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
     </head>
      <body>
-     <div class="container row-centered well">
+     <div class="container row-centered">
     <div class="row">
     <div class="col-md-8">
          <div class="quote-box">
-             <div class ="quote-content">
+             <div class ="quote-content" id="quoteContent">
                  <blockquote>
                  <p>Morbi placerat imperdiet risus quis blandit. Ut lobortis elit luctus, feugiat erat vitae, interdum diam. 
                  Nam sit amet arcu vitae justo lacinia ultricies nec eget tellus. Curabitur id sapien massa. In hac
@@ -30,8 +34,8 @@
            <div class="form-group">  
            <label for="Category">Category</label>         
            <select class="form-control" id="Category">
-                <option>Film</option>
-                <option>Famous</option>
+                <option>movies</option>
+                <option>famous</option>
            </select>
            </div>
          </div>
@@ -40,4 +44,29 @@
      </div>
 
      </body>
+     <script>
+     $('#Category').change(
+      function(e)
+      {
+         console.log($(this).val());
+          $.ajax({
+                url:`https://andruxnet-random-famous-quotes.p.mashape.com/?cat=${$(this).val()}`,
+                headers:
+                {
+                   'X-Mashape-Key' : 'EfPK88qS4Jmsho6wFxR8XzNXzDeZp1HNctkjsnPkokSpm15LKD',
+                   'Content-Type': 'application/x-www-form-urlencoded',
+                   'Accept': 'application/json'
+                },
+                success : function(response)  
+                {
+                   var r = jQuery.parseJSON(response);
+                   console.log(r.quote);
+                   $('#quoteContent blockquote p').text(r.quote);
+                   $('.quote-author').text(r.author);
+                } 
+               
+          });
+     });
+   
+     </script>
 </html>

@@ -24,19 +24,29 @@ body{
     margin-right: 4px;
     font-family: 'Grand Hotel', cursive;
     font-size: 17px;
+    position: absolute;
+    top: -10px;
+    left :20px;
+    border: 2px  silver;
+    background-color:  sandybrown; 
+    padding:2px;
 }
 .quote-content
 {
     font-family: 'Satisfy', cursive;
     font-size: 25px;
+    background-color: #ffff00;
+    border: 2px  silver;
+    position: relative;
+    padding:5px;
 }
 
-* {
+/* {
     border: 1px solid red !important;
 }
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
-    box-sizing: border-box;
-} 
+     box-sizing: border-box;
+}*/ 
