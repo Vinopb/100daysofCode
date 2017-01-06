@@ -5,6 +5,7 @@
 html, body, .container {
     padding: 2px;
     height: 100%;
+    font:medium normal 14px/20px Arial, Helvetica, sans-serif;
     
 }
 body{
@@ -38,9 +39,38 @@ body{
     background-color: #ffff00;
     border: 2px  silver;
     position: relative;
-    padding:5px;
+    padding:15px;
+    border-radius:10px;
 }
 
+.quote-twitter
+{
+  position: absolute;
+  bottom: 1px;
+  margin:5px;
+}
+.col-md-8 {   
+    padding-right: 0px;
+}
+.quote-settings
+{
+    background-color: whitesmoke;
+    border: 2px  silver;
+    position: relative;
+    min-height: 190px;
+}
+.quote-settings-title
+{
+    margin-right: 4px;
+    font-family: 'Grand Hotel', cursive;
+    font-size: 17px;
+    position: absolute;
+    top: -10px;
+    left :20px;
+    border: 2px  silver;
+    background-color:  sandybrown; 
+    padding:2px;
+}
 /* {
     border: 1px solid red !important;
 }

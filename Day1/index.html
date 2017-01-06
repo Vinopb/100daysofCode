@@ -27,10 +27,20 @@
              <div class ="quote-author text-right">
                  Vinod-Padmanaban
               </div>
+              <div class="quote-twitter">
+                  <a
+                  class="twitter-share-button" id="tweet-quote" data-show-count="false">
+                  Tweet
+                  </a>
+              </div>
          </div>
      </div>
       <div class="col-md-4">
-         <div class="quote-category form-inline">
+        
+         <div class="quote-settings form-inline">
+           <div class ="quote-settings-title">
+                 Setting
+           </div>
            <div class="form-group">  
            <label for="Category">Category</label>         
            <select class="form-control" id="Category">
@@ -45,6 +55,16 @@
 
      </body>
      <script>
+     var currentQuote ='';
+     var  currentAuthor ='';
+     function inIframe () { try { 
+         return window.self !== window.top; } catch (e) { return true; } }
+         function openURL(url)
+         {
+         window.open(url, 'Share', 
+         'width=550, height=400, toolbar=0, scrollbars=1 ,location=0 ,statusbar=0,menubar=0, resizable=0');
+        }
+        $(document).ready(function() {
      $('#Category').change(
       function(e)
       {
@@ -60,13 +80,28 @@
                 success : function(response)  
                 {
                    var r = jQuery.parseJSON(response);
-                   console.log(r.quote);
+                 
                    $('#quoteContent blockquote p').text(r.quote);
+                   currentQuote =r.quote;
                    $('.quote-author').text(r.author);
+                   currentAuthor = r.author;
+                   console.log(currentQuote);
+                   if(inIframe())
+                    {
+                        $('#tweet-quote')
+                        .attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + currentQuote + '" ' + currentAuthor));
+                     }
                 } 
                
           });
      });
+    $('#tweet-quote').on('click', function() {
+    if(!inIframe()) {
+      openURL('https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text='
+       + encodeURIComponent('"' + currentQuote + '" ' + currentAuthor));
+    }
+  });
+        });
    
      </script>
 </html>
