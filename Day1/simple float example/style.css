@@ -1,0 +1,26 @@
+body{
+    margin :0 auto;
+    width: 90%;
+    max-width: 900px;
+}
+p{
+    line-height: 2;
+    word-spacing: 0.1rem;
+}
+img{
+    float: left;
+    margin :0 3rem 0 0;
+}
+
+p::first-line{
+  text-transform: uppercase;
+}
+
+p::first-letter{
+    font-size: 3em;
+     border: 1px solid black;
+     background: red;
+      padding: 2px;
+  margin-right: 4px;
+ 
+}
